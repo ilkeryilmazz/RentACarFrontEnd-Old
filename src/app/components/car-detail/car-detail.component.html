@@ -1,0 +1,77 @@
+<div *ngIf="dataLoaded == true">
+  <div id="carImagesSlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button
+        [ngClass]="getActiveImageClass(carImage)"
+        *ngFor="let carImage of carImages; let i = index"
+        type="button"
+        data-bs-target="#carImagesSlider"
+        [attr.data-bs-slide-to]="i"
+        aria-label="Slide 5"
+      ></button>
+    </div>
+
+    <div class="carousel-inner border border-dark d-block w-100">
+      <div
+        class="carousel-item"
+        [ngClass]="getActiveImageClass(carImage)"
+        *ngFor="let carImage of carImages"
+      >
+        <img
+          src="{{ imageBase + carImage.imagePath }}"
+          class="d-block w-100"
+          alt="image.imagePath"
+        />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carImagesSlider"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carImagesSlider"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <table class="table table-dark table-borderless table-striped">
+    <thead>
+      <tr>
+        <th>Araba Adı</th>
+        <th>Markası</th>
+        <th>Rengi</th>
+        <th>Açıklama</th>
+        <th>Günlük Ücret</th>
+        <th>Kirala</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ carDetail.carName }}</td>
+        <td>{{ carDetail.brandName }}</td>
+        <td>{{ carDetail.colorName }}</td>
+        <td>{{ carDetail.description }}</td>
+        <td>{{ carDetail.dailyPrice | currency:"₺"}}</td>
+        <td>
+          <button 
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            class="btn btn-success"
+          >
+            Aracı Kirala
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

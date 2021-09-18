@@ -1,0 +1,9 @@
+
+
+<ul class="list-group">
+    <li (click)="clearCurrentColor()" routerLink="cars" [class]="getAllColorClass()">Tüm Renkler</li>
+    <li  class="list-group-item list-group-item-dark mt-2">Renk Ara</li>
+  
+    <input [(ngModel)]="filterText" type="text" class="form-control mb-2" placeholder="Bir şeyler yaz" >
+    <li (click)="setCurrentColor(color)" routerLink="cars/color/{{color.id}}" *ngFor="let color of colors | filterPipe:filterText" [class]="getCurrentColorClass(color)">{{color.name}}</li>
+</ul>

@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+$color-black:#0000;
+.color-black{
+    color: $color-black;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+}
